@@ -9,33 +9,48 @@
     <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap5/css/bootstrap-icons.css">
 
-    <!-- Custom Styles for AI Theme -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --ai-primary: #393E46;
-            --ai-secondary: #929AAB;
-            --ai-accent: #393E46;
+            --ai-primary: #6D0808;
+            --ai-secondary: #757D6F;
+            --ai-accent: #6D0808;
             --transition-speed: 0.3s;
         }
 
         [data-bs-theme="dark"] {
-            --bg-main: #393E46;
-            --bg-card: #4b525d;
-            --text-main: #F7F7F7;
-            --text-muted: #929AAB;
-            --accent-gradient: linear-gradient(135deg, #929AAB, #EEEEEE);
+            --bg-main: #1a0505;
+            --bg-card: #2a0a0a;
+            --text-main: #EEEAD7;
+            --text-muted: #a3a99a;
+            --accent-gradient: linear-gradient(135deg, #b31212, #757D6F);
+        }
+
+        [data-bs-theme="dark"] body {
+            background-image: radial-gradient(circle at 50% 50%, rgba(109, 8, 8, 0.1) 0%, transparent 100%);
+        }
+
+        [data-bs-theme="dark"] .feature-card,
+        [data-bs-theme="dark"] .pricing-card,
+        [data-bs-theme="dark"] .testimonial-card {
+            border: 1px solid rgba(238, 234, 215, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         [data-bs-theme="light"] {
-            --bg-main: #F7F7F7;
-            --bg-card: #EEEEEE;
-            --text-main: #393E46;
-            --text-muted: #929AAB;
-            --accent-gradient: linear-gradient(135deg, #393E46, #929AAB);
+            --bg-main: #EEEAD7;
+            --bg-card: #DFDBCB;
+            --text-main: #2D0000;
+            --text-muted: #757D6F;
+            --accent-gradient: linear-gradient(135deg, #6D0808, #2D0000);
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-main);
             color: var(--text-main);
             transition: background-color var(--transition-speed), color var(--transition-speed);
@@ -43,14 +58,20 @@
 
         .navbar {
             background-color: var(--bg-main) !important;
-            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+            border-bottom: 1px solid var(--ai-secondary);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             z-index: 1050;
         }
 
         .navbar-brand {
+            font-family: 'Playfair Display', serif;
             font-weight: 800;
             letter-spacing: 1px;
+        }
+
+        h1, h2, h3, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+            font-family: 'Playfair Display', serif;
         }
 
         .brand-ai {
@@ -81,14 +102,54 @@
                         radial-gradient(circle at bottom left, rgba(57, 62, 70, 0.1), transparent);
         }
 
+        [data-bs-theme="dark"] .hero-section {
+            background: radial-gradient(circle at top right, rgba(109, 8, 8, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(117, 125, 111, 0.1), transparent);
+        }
+
         .hero-title {
+            font-family: 'Playfair Display', serif;
             font-weight: 800;
             font-size: 3.5rem;
             background: var(--accent-gradient);
-            background-clip: text;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+        }
+
+        .hero-badge {
+            background: var(--accent-gradient);
+            color: white;
+        }
+
+        .hero-lead {
+            max-width: 700px;
+            color: var(--text-muted);
+        }
+
+        .pricing-section {
+            background-color: rgba(128, 128, 128, 0.05);
+        }
+
+        .pricing-badge {
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .testimonial-carousel {
+            max-width: 85%;
+            overflow: visible;
+        }
+
+        .testimonial-card-max {
+            max-width: 1000px;
+        }
+
+        .contact-decoration-pos {
+            right: -5%;
+            bottom: -5%;
         }
 
         .btn-ai-primary {
@@ -98,7 +159,7 @@
             font-weight: 700;
             padding: 14px 34px;
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.35);
+            box-shadow: 0 4px 15px rgba(109, 8, 8, 0.35);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -112,14 +173,14 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 15px rgba(109, 8, 8, 0.4);
             transition: all 0.3s ease;
             animation: pulse-blue 2s infinite;
         }
 
         .btn-ai-download:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 8px 25px rgba(109, 8, 8, 0.6);
             color: white;
         }
 
@@ -131,7 +192,7 @@
 
         .btn-ai-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 20px rgba(109, 8, 8, 0.3);
             color: white;
         }
 
@@ -148,28 +209,31 @@
         .btn-outline-primary {
             color: var(--ai-primary);
             border-color: var(--ai-primary);
-            background-color: rgba(57, 62, 70, 0.06);
+            background-color: rgba(109, 8, 8, 0.06);
         }
 
         .btn-outline-primary:hover {
             background-color: var(--ai-primary);
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(57, 62, 70, 0.3);
+            box-shadow: 0 8px 18px rgba(109, 8, 8, 0.3);
         }
 
         .btn-outline-secondary {
             color: var(--text-main);
             border-color: var(--text-main);
-            background-color: rgba(128, 128, 128, 0.08);
+            background-color: rgba(117, 125, 111, 0.08);
         }
 
         .btn-outline-secondary:hover {
             background-color: var(--text-main);
             color: var(--bg-main);
             transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(128, 128, 128, 0.3);
+            box-shadow: 0 8px 18px rgba(117, 125, 111, 0.3);
         }
+
+        .text-ai-primary { color: var(--ai-primary) !important; }
+        .text-ai-secondary { color: var(--ai-secondary) !important; }
 
         [data-bs-theme="dark"] .btn-outline-primary {
             color: var(--ai-primary);
@@ -191,25 +255,25 @@
             border-radius: 50px;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            box-shadow: 0 5px 20px rgba(109, 8, 8, 0.4);
             animation: pulse-cta 2s infinite;
         }
 
         .btn-ai-cta:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.6);
+            box-shadow: 0 8px 30px rgba(109, 8, 8, 0.6);
             color: white;
         }
 
         @keyframes pulse-cta {
-            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(57, 62, 70, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 8px 30px rgba(57, 62, 70, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 5px 20px rgba(57, 62, 70, 0.4); }
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(109, 8, 8, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 8px 30px rgba(109, 8, 8, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 5px 20px rgba(109, 8, 8, 0.4); }
         }
 
         .feature-card {
             background-color: var(--bg-card);
-            border: 1px solid rgba(128, 128, 128, 0.1);
+            border: 1px solid rgba(117, 125, 111, 0.1);
             border-radius: 20px;
             transition: all 0.3s ease;
             height: 100%;
@@ -229,25 +293,63 @@
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             background: var(--accent-gradient);
-            background-clip: text;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .pricing-card {
             background-color: var(--bg-card);
-            border: 2px solid transparent;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(117, 125, 111, 0.2);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            position: relative;
+            padding: 3rem 2rem !important;
         }
 
         [data-bs-theme="dark"] .pricing-card {
-            border: 2px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--ai-primary);
         }
 
         .pricing-card.featured {
-            border-color: var(--ai-primary);
+            border: 2px solid var(--ai-primary);
             transform: scale(1.05);
+            z-index: 1;
+            box-shadow: 0 15px 35px rgba(109, 8, 8, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.07) translateY(-10px);
+            box-shadow: 0 25px 50px rgba(109, 8, 8, 0.25);
+        }
+
+        .pricing-price {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .pricing-feature-list {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pricing-feature-list li {
+            margin-bottom: 1rem !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pricing-feature-list i {
+            font-size: 1.1rem;
         }
 
         #features, #pricing, #testimonials, #contact {
@@ -282,7 +384,7 @@
             background-color: var(--bg-card);
             border-radius: 20px;
             padding: 3rem 2rem;
-            border: 1px solid rgba(128, 128, 128, 0.1);
+            border: 1px solid rgba(117, 125, 111, 0.1);
             border-top: 5px solid var(--ai-primary);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -350,15 +452,73 @@
             box-shadow: 0 0 15px var(--ai-primary);
         }
 
+        .contact-section {
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(109, 8, 8, 0.05);
+        }
+
+        [data-bs-theme="dark"] .contact-section {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info-box {
+            padding: 2rem;
+            border-left: 4px solid var(--ai-primary);
+            background: rgba(109, 8, 8, 0.03);
+            border-radius: 0 20px 20px 0;
+        }
+
         .contact-form-container {
             background-color: var(--bg-card);
             border-radius: 20px;
             padding: 3rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(117, 125, 111, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-label-custom {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control-custom {
+            border: none;
+            border-bottom: 2px solid rgba(117, 125, 111, 0.3);
+            border-radius: 0;
+            background-color: transparent;
+            padding: 0.75rem 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control-custom:focus {
+            box-shadow: none;
+            border-color: var(--ai-primary);
+            background-color: transparent;
+        }
+
+        .contact-decoration {
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 15rem;
+            color: var(--ai-primary);
+            opacity: 0.05;
+            z-index: -1;
+            line-height: 1;
         }
 
         footer {
-            border-top: 1px solid rgba(128, 128, 128, 0.2);
+            border-top: 1px solid rgba(117, 125, 111, 0.2);
             padding: 2rem 0;
         }
     </style>
@@ -368,21 +528,21 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">
-                <span class="brand-ai">AI</span> <span class="brand-nexus">NEXUS</span>
+            <a class="navbar-brand" href="#home" title="AI Nexus Home" aria-label="AI Nexus Home">
+                <span class="brand-ai" title="AI">AI</span> <span class="brand-nexus" title="Nexus">NEXUS</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation" title="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-door-fill me-1"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features"><i class="bi bi-cpu-fill me-1"></i> Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pricing"><i class="bi bi-credit-card-2-back-fill me-1"></i> Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="bi bi-chat-quote-fill me-1"></i> Testimonials</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope-heart-fill me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-door-fill me-1 text-ai-primary"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features"><i class="bi bi-cpu-fill me-1 text-ai-primary"></i> Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing"><i class="bi bi-credit-card-2-back-fill me-1 text-ai-primary"></i> Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="bi bi-chat-quote-fill me-1 text-ai-primary"></i> Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope-heart-fill me-1 text-ai-primary"></i> Contact</a></li>
                     <li class="nav-item ms-lg-3">
-                        <button id="themeToggle" class="btn btn-ai-primary btn-sm px-3">
+                        <button id="themeToggle" type="button" class="btn btn-ai-primary btn-sm px-3">
                             <span id="themeIcon"><i class="bi bi-moon-stars-fill"></i></span> <span id="themeText">Switch to Dark Mode</span>
                         </button>
                     </li>
@@ -394,16 +554,16 @@
     <!-- Hero Header -->
     <header id="home" class="hero-section text-center">
         <div class="container">
-            <span class="badge rounded-pill mb-3 px-3 py-2" style="background: var(--accent-gradient); color: white;">
-                v1.0 Now Live - Newest and Strongest Ai 
+            <span class="badge rounded-pill mb-3 px-3 py-2 hero-badge">
+                v1.0 Now Live - Newest and Strongest Ai
             </span>
             <h1 class="hero-title mb-4">The Future of <br>Intelligence is Here</h1>
-            <p class="lead mb-5 mx-auto" style="max-width: 700px; color: var(--text-muted);">
+            <p class="lead mb-5 mx-auto hero-lead">
                 Scale your creativity and productivity with the world's most powerful AI subscription.
                 Experience seamless neural processing, infinite context, and multi-modal capabilities.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <button id="downloadBtn" class="btn btn-ai-download">
+                <button id="downloadBtn" type="button" class="btn btn-ai-download">
                     <i class="bi bi-download"></i> Download Now
                 </button>
                 <a href="#pricing" class="btn btn-outline-secondary rounded-pill px-4 py-3">View Plans</a>
@@ -445,56 +605,56 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-5" style="background-color: rgba(128,128,128,0.05);">
+    <section id="pricing" class="py-5 pricing-section">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="fw-bold display-5">Simple, Transparent Pricing</h2>
+                <h2 class="fw-bold display-5">Transparent Pricing</h2>
                 <p class="text-muted">Choose the plan that fits your ambition.</p>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
                     <div class="pricing-card p-4 text-center">
                         <h3 class="fw-bold">Free</h3>
-                        <div class="display-5 fw-bold my-3">$0<span class="fs-6 text-muted">/mo</span></div>
-                        <ul class="list-unstyled mb-4 text-muted">
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Web, iOS, Android & Desktop</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Code & Data Visualization</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Content Creation Tools</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Web Search & Memory</li>
-                            <li class="mb-2 text-decoration-line-through"><i class="bi bi-x-circle-fill text-danger me-2"></i> Higher Usage Limits</li>
+                        <div class="display-5 pricing-price fw-bold my-3">$0<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted pricing-feature-list">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Web, iOS, Android & Desktop</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Code & Data Visualization</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Content Creation Tools</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Web Search & Memory</li>
+                            <li class="mb-2 text-decoration-line-through"><i class="bi bi-x-circle-fill text-ai-secondary me-2"></i> Higher Usage Limits</li>
                         </ul>
-                        <button class="btn btn-outline-primary w-100 rounded-pill">Get Started</button>
+                        <button type="button" class="btn btn-outline-primary w-100 rounded-pill">Get Started</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="pricing-card featured p-4 text-center">
                         <div class="mb-2">
-                            <span class="badge rounded-pill px-3 py-2" style="background: var(--accent-gradient); color: white; font-size: 0.8rem;">Most Popular</span>
+                            <span class="badge rounded-pill px-3 py-2 pricing-badge">Most Popular</span>
                         </div>
                         <h3 class="fw-bold">Pro</h3>
-                        <div class="display-5 fw-bold my-3">$20<span class="fs-6 text-muted">/mo</span></div>
-                        <ul class="list-unstyled mb-4 text-muted">
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Everything in Free</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Claude Code & Cowork</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Design & Science Suites</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Unlimited Projects & Research</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Microsoft 365 Integration</li>
+                        <div class="display-5 pricing-price fw-bold my-3">$20<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted pricing-feature-list">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Everything in Free</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Claude Code & Cowork</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Design & Science Suites</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Unlimited Projects & Research</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Microsoft 365 Integration</li>
                         </ul>
-                        <button class="btn btn-ai-primary w-100">Go Pro Now</button>
+                        <button type="button" class="btn btn-ai-primary w-100">Go Pro Now</button>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="pricing-card p-4 text-center">
                         <h3 class="fw-bold">Max</h3>
-                        <div class="display-5 fw-bold my-3">From $100<span class="fs-6 text-muted">/mo</span></div>
-                        <ul class="list-unstyled mb-4 text-muted">
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Everything in Pro</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 5x to 20x More Usage</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Higher Output Limits</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Early Feature Access</li>
-                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Priority High-Traffic Access</li>
+                        <div class="display-5 pricing-price fw-bold my-3">From $100<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted pricing-feature-list">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Everything in Pro</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> 5x to 20x More Usage</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Higher Output Limits</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Early Feature Access</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-ai-primary me-2"></i> Priority High-Traffic Access</li>
                         </ul>
-                        <button class="btn btn-outline-primary w-100 rounded-pill">Contact Sales</button>
+                        <button type="button" class="btn btn-outline-primary w-100 rounded-pill">Contact Sales</button>
                     </div>
                 </div>
             </div>
@@ -508,34 +668,34 @@
                 <h2 class="fw-bold display-5">Trusted by Visionaries</h2>
                 <p class="text-muted">Join thousands of developers and creators scaling their potential.</p>
             </div>
-            <div id="testimonialCarousel" class="carousel slide mt-5 mx-auto" data-bs-ride="carousel" style="max-width: 85%; overflow: visible;">
+            <div id="testimonialCarousel" class="carousel slide mt-5 mx-auto testimonial-carousel" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item">
-                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                        <div class="testimonial-card mx-auto text-center testimonial-card-max">
                             <p class="lead italic mb-4">"Enterprise support is top-notch. We scaled our API usage by 10x without a single hiccup."</p>
                             <h5 class="fw-bold mb-0">Alyssa Marie B. Collarin</h5>
                             <span class="text-muted">Founder, NeuralScale AI</span>
                         </div>
                     </div>
                     <div class="carousel-item active">
-                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                        <div class="testimonial-card mx-auto text-center testimonial-card-max">
                             <p class="lead italic mb-4">"AI Nexus has completely transformed our workflow. The infinite context window is a game-changer for our engineering team."</p>
                             <h5 class="fw-bold mb-0">Theo James S. Nicdao</h5>
                             <span class="text-muted">CTO, TechFlow Systems</span>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                        <div class="testimonial-card mx-auto text-center testimonial-card-max">
                             <p class="lead italic mb-4">"The best AI subscription I've ever used. The multi-modal capabilities allow me to prototype designs in minutes."</p>
                             <h5 class="fw-bold mb-0">Kim Inoc</h5>
                             <span class="text-muted">Lead Designer, CreativeMind</span>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
             </div>
@@ -546,29 +706,43 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5" style="background-color: rgba(128,128,128,0.05);">
+    <section id="contact" class="py-5 contact-section">
+        <div class="contact-decoration contact-decoration-pos">Nexus</div>
         <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold display-5">Get In Touch</h2>
-                <p class="text-muted">Have questions? Our team is ready to help you scale.</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <h2 class="fw-bold display-5 mb-4">Get In Touch</h2>
+                    <p class="lead mb-5 text-muted">Have questions? Our team is ready to help you scale your digital potential. Let's build the future together.</p>
+
+                    <div class="contact-info-box mb-4">
+                        <h5 class="fw-bold mb-3">Direct Line</h5>
+                        <p class="mb-2"><i class="bi bi-envelope-fill me-2 text-ai-primary"></i> contact@ainexus.io</p>
+                        <p class="mb-0"><i class="bi bi-geo-alt-fill me-2 text-ai-primary"></i> Neural Hub, Silicon Valley, CA</p>
+                    </div>
+
+                    <div class="contact-info-box">
+                        <h5 class="fw-bold mb-3">Office Hours</h5>
+                        <p class="mb-0">Mon - Fri: 9:00 AM - 6:00 PM PST</p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
                     <div class="contact-form-container">
                         <form id="aiContactForm">
-                            <div class="mb-3">
-                                <label for="userName" class="form-label"><i class="bi bi-person-fill me-2"></i>Full Name</label>
-                                <input type="text" class="form-control" id="userName" name="userName" required placeholder="User Name">
+                            <div class="row g-4">
+                                <div class="col-md-6 mb-3">
+                                    <label for="userName" class="form-label-custom">Full Name</label>
+                                    <input type="text" class="form-control form-control-custom" id="userName" name="userName" required placeholder="Enter your name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="userEmail" class="form-label-custom">Email Address</label>
+                                    <input type="email" class="form-control form-control-custom" id="userEmail" name="userEmail" required placeholder="email@gmail.com">
+                                </div>
+                                <div class="col-12 mb-4">
+                                    <label for="userMessage" class="form-label-custom">Message</label>
+                                    <textarea class="form-control form-control-custom" id="userMessage" name="userMessage" rows="4" required placeholder="How can we help you?"></textarea>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="userEmail" class="form-label"><i class="bi bi-envelope-at-fill me-2"></i>Email Address</label>
-                                <input type="email" class="form-control" id="userEmail" name="userEmail" required placeholder="email@gmail.com">
-                            </div>
-                            <div class="mb-3">
-                                <label for="userMessage" class="form-label"><i class="bi bi-chat-left-text-fill me-2"></i>Message</label>
-                                <textarea class="form-control" id="userMessage" name="userMessage" rows="4" required placeholder="How can we help you?"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-ai-primary w-100">Send Message</button>
+                            <button type="submit" class="btn btn-ai-primary w-100 py-3">Send Message</button>
                         </form>
                     </div>
                 </div>
