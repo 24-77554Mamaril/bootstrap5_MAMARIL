@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nexus | Next-Gen AI Subscriptions</title>
+
+    <!-- Local Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap-icons.css">
+
+    <!-- Custom Styles for AI Theme -->
+    <style>
+        :root {
+            --ai-primary: #393E46;
+            --ai-secondary: #929AAB;
+            --ai-accent: #393E46;
+            --transition-speed: 0.3s;
+        }
+
+        [data-bs-theme="dark"] {
+            --bg-main: #393E46;
+            --bg-card: #4b525d;
+            --text-main: #F7F7F7;
+            --text-muted: #929AAB;
+            --accent-gradient: linear-gradient(135deg, #929AAB, #EEEEEE);
+        }
+
+        [data-bs-theme="light"] {
+            --bg-main: #F7F7F7;
+            --bg-card: #EEEEEE;
+            --text-main: #393E46;
+            --text-muted: #929AAB;
+            --accent-gradient: linear-gradient(135deg, #393E46, #929AAB);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        .navbar {
+            background-color: var(--bg-main) !important;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+            backdrop-filter: blur(10px);
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .brand-ai {
+            color: var(--text-main);
+        }
+
+        .brand-nexus {
+            color: var(--ai-primary);
+        }
+
+        [data-bs-theme="dark"] .brand-nexus {
+            color: var(--ai-secondary);
+        }
+
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main) !important;
+        }
+
+        .hero-section {
+            padding: 100px 0;
+            background: radial-gradient(circle at top right, rgba(146, 154, 171, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(57, 62, 70, 0.1), transparent);
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: 3.5rem;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .btn-ai-primary {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 14px 34px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-ai-download {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse-blue 2s infinite;
+        }
+
+        .btn-ai-download:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+            color: white;
+        }
+
+        @keyframes pulse-blue {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(57, 62, 70, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 4px 25px rgba(57, 62, 70, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(57, 62, 70, 0.4); }
+        }
+
+        .btn-ai-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            color: white;
+        }
+
+        /* Make outline buttons clearly visible */
+        .btn-outline-primary,
+        .btn-outline-secondary {
+            border-width: 2px;
+            font-weight: 700;
+            padding: 12px 28px;
+            letter-spacing: 0.3px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-outline-primary {
+            color: var(--ai-primary);
+            border-color: var(--ai-primary);
+            background-color: rgba(57, 62, 70, 0.06);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--ai-primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(57, 62, 70, 0.3);
+        }
+
+        .btn-outline-secondary {
+            color: var(--text-main);
+            border-color: var(--text-main);
+            background-color: rgba(128, 128, 128, 0.08);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--text-main);
+            color: var(--bg-main);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(128, 128, 128, 0.3);
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary {
+            color: var(--ai-primary);
+            border-color: var(--ai-primary);
+            background-color: rgba(146, 154, 171, 0.1);
+        }
+
+        [data-bs-theme="dark"] .btn-outline-primary:hover {
+            background-color: var(--ai-primary);
+            color: #0b0e14;
+        }
+
+        .btn-ai-cta {
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 210, 255, 0.4);
+            animation: pulse-cta 2s infinite;
+        }
+
+        .btn-ai-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.6);
+            color: white;
+        }
+
+        @keyframes pulse-cta {
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(57, 62, 70, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 8px 30px rgba(57, 62, 70, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 5px 20px rgba(57, 62, 70, 0.4); }
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        [data-bs-theme="dark"] .feature-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--ai-primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        [data-bs-theme="dark"] .pricing-card {
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--ai-primary);
+            transform: scale(1.05);
+        }
+
+        #features, #pricing, #testimonials, #contact {
+            scroll-margin-top: 80px;
+        }
+
+        .testimonial-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 150px;
+            background: var(--ai-primary);
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        [data-bs-theme="dark"] .testimonial-header::before {
+            opacity: 0.1;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            border-top: 5px solid var(--ai-primary);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            margin: 0 auto;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--ai-primary);
+            box-shadow: 0 5px 15px rgba(57, 62, 70, 0.3);
+        }
+
+        [data-bs-theme="dark"] .testimonial-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 5px solid var(--ai-primary);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ai-primary);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: serif;
+            color: var(--ai-primary);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-control-prev { left: -50px; }
+        .carousel-control-next { right: -50px; }
+
+        @media (max-width: 768px) {
+            .carousel-control-prev { left: -10px; }
+            .carousel-control-next { right: -10px; }
+        }
+
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 15px var(--ai-primary);
+        }
+
+        .contact-form-container {
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            border-top: 1px solid rgba(128, 128, 128, 0.2);
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-ai">AI</span> <span class="brand-nexus">NEXUS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-door-fill me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features"><i class="bi bi-cpu-fill me-1"></i> Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing"><i class="bi bi-credit-card-2-back-fill me-1"></i> Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="bi bi-chat-quote-fill me-1"></i> Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope-heart-fill me-1"></i> Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button id="themeToggle" class="btn btn-ai-primary btn-sm px-3">
+                            <span id="themeIcon"><i class="bi bi-moon-stars-fill"></i></span> <span id="themeText">Switch to Dark Mode</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header id="home" class="hero-section text-center">
+        <div class="container">
+            <span class="badge rounded-pill mb-3 px-3 py-2" style="background: var(--accent-gradient); color: white;">
+                v1.0 Now Live - Newest and Strongest Ai 
+            </span>
+            <h1 class="hero-title mb-4">The Future of <br>Intelligence is Here</h1>
+            <p class="lead mb-5 mx-auto" style="max-width: 700px; color: var(--text-muted);">
+                Scale your creativity and productivity with the world's most powerful AI subscription.
+                Experience seamless neural processing, infinite context, and multi-modal capabilities.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <button id="downloadBtn" class="btn btn-ai-download">
+                    <i class="bi bi-download"></i> Download Now
+                </button>
+                <a href="#pricing" class="btn btn-outline-secondary rounded-pill px-4 py-3">View Plans</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5">Powerful Capabilities</h2>
+                <p class="text-muted">Engineered for the next generation of digital creators.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center">
+                        <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                        <h4 class="fw-bold mb-3">Neural Processing</h4>
+                        <p class="text-muted">Instantaneous response times with our proprietary quantum-accelerated neural nodes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center">
+                        <div class="feature-icon"><i class="bi bi-infinity"></i></div>
+                        <h4 class="fw-bold mb-3">Infinite Context</h4>
+                        <p class="text-muted">Upload entire libraries of documentation and keep the AI focused on every single detail.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center">
+                        <div class="feature-icon"><i class="bi bi-palette"></i></div>
+                        <h4 class="fw-bold mb-3">Multi-Modal API</h4>
+                        <p class="text-muted">Seamlessly switch between text, image, audio, and code generation in a single prompt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-5" style="background-color: rgba(128,128,128,0.05);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5">Simple, Transparent Pricing</h2>
+                <p class="text-muted">Choose the plan that fits your ambition.</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="pricing-card p-4 text-center">
+                        <h3 class="fw-bold">Free</h3>
+                        <div class="display-5 fw-bold my-3">$0<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Web, iOS, Android & Desktop</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Code & Data Visualization</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Content Creation Tools</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Web Search & Memory</li>
+                            <li class="mb-2 text-decoration-line-through"><i class="bi bi-x-circle-fill text-danger me-2"></i> Higher Usage Limits</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100 rounded-pill">Get Started</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card featured p-4 text-center">
+                        <div class="mb-2">
+                            <span class="badge rounded-pill px-3 py-2" style="background: var(--accent-gradient); color: white; font-size: 0.8rem;">Most Popular</span>
+                        </div>
+                        <h3 class="fw-bold">Pro</h3>
+                        <div class="display-5 fw-bold my-3">$20<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Everything in Free</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Claude Code & Cowork</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Design & Science Suites</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Unlimited Projects & Research</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Microsoft 365 Integration</li>
+                        </ul>
+                        <button class="btn btn-ai-primary w-100">Go Pro Now</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card p-4 text-center">
+                        <h3 class="fw-bold">Max</h3>
+                        <div class="display-5 fw-bold my-3">From $100<span class="fs-6 text-muted">/mo</span></div>
+                        <ul class="list-unstyled mb-4 text-muted">
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Everything in Pro</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 5x to 20x More Usage</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Higher Output Limits</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Early Feature Access</li>
+                            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Priority High-Traffic Access</li>
+                        </ul>
+                        <button class="btn btn-outline-primary w-100 rounded-pill">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5 pb-5 testimonial-header">
+                <h2 class="fw-bold display-5">Trusted by Visionaries</h2>
+                <p class="text-muted">Join thousands of developers and creators scaling their potential.</p>
+            </div>
+            <div id="testimonialCarousel" class="carousel slide mt-5 mx-auto" data-bs-ride="carousel" style="max-width: 85%; overflow: visible;">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                            <p class="lead italic mb-4">"Enterprise support is top-notch. We scaled our API usage by 10x without a single hiccup."</p>
+                            <h5 class="fw-bold mb-0">Alyssa Marie B. Collarin</h5>
+                            <span class="text-muted">Founder, NeuralScale AI</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item active">
+                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                            <p class="lead italic mb-4">"AI Nexus has completely transformed our workflow. The infinite context window is a game-changer for our engineering team."</p>
+                            <h5 class="fw-bold mb-0">Theo James S. Nicdao</h5>
+                            <span class="text-muted">CTO, TechFlow Systems</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card mx-auto text-center" style="max-width: 1000px;">
+                            <p class="lead italic mb-4">"The best AI subscription I've ever used. The multi-modal capabilities allow me to prototype designs in minutes."</p>
+                            <h5 class="fw-bold mb-0">Kim Inoc</h5>
+                            <span class="text-muted">Lead Designer, CreativeMind</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#pricing" class="btn btn-ai-cta px-5 py-3 rounded-pill">Join the Visionaries</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5" style="background-color: rgba(128,128,128,0.05);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5">Get In Touch</h2>
+                <p class="text-muted">Have questions? Our team is ready to help you scale.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-form-container">
+                        <form id="aiContactForm">
+                            <div class="mb-3">
+                                <label for="userName" class="form-label"><i class="bi bi-person-fill me-2"></i>Full Name</label>
+                                <input type="text" class="form-control" id="userName" name="userName" required placeholder="User Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="userEmail" class="form-label"><i class="bi bi-envelope-at-fill me-2"></i>Email Address</label>
+                                <input type="email" class="form-control" id="userEmail" name="userEmail" required placeholder="email@gmail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="userMessage" class="form-label"><i class="bi bi-chat-left-text-fill me-2"></i>Message</label>
+                                <textarea class="form-control" id="userMessage" name="userMessage" rows="4" required placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-ai-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="text-muted mb-0"><i class="bi bi-robot me-2"></i>&copy; 2026 AI Nexus Subscription Service. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Local Bootstrap 5 JS Bundle -->
+    <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <!-- Local SweetAlert2 JS -->
+    <script src="bootstrap5/js/sweetalert2.all.min.js"></script>
+
+    <!-- Custom Interactivity Scripts -->
+    <script>
+        // Theme Toggling Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-bs-theme', newTheme);
+
+            if (newTheme === 'light') {
+                themeIcon.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+                themeText.textContent = 'Switch to Dark Mode';
+            } else {
+                themeIcon.innerHTML = '<i class="bi bi-sun-fill"></i>';
+                themeText.textContent = 'Switch to Light Mode';
+            }
+
+            // Use SweetAlert2 for a subtle notification
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: `Theme changed to ${newTheme} mode`,
+                showConfirmButton: false,
+                timer: 2000,
+                background: newTheme === 'dark' ? '#1c2128' : '#fff',
+                color: newTheme === 'dark' ? '#fff' : '#000'
+            });
+        });
+
+        // Download Button Logic
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.addEventListener('click', () => {
+            Swal.fire({
+                title: 'Starting Download...',
+                text: 'Preparing your AI Nexus installation package.',
+                icon: 'info',
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Download Started!',
+                        text: 'Your file is being downloaded to your device.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            });
+        });
+
+        // Form Submission Logic with SweetAlert2
+        const contactForm = document.getElementById('aiContactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('userName').value;
+
+            Swal.fire({
+                title: 'Sending Message...',
+                text: 'Please wait while we transmit your request to the neural network.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Simulate API call
+            setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Message Received!',
+                    text: `Thank you, ${name}. Our AI agents will respond to your request within 24 hours.`,
+                    confirmButtonColor: '#393E46'
+                });
+                contactForm.reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
